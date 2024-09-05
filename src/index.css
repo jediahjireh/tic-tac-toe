@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* simulate a notepad background */
+.lined-background {
+  background-image: linear-gradient(to bottom, #e0e0e0 1px, transparent 1px);
+  background-size: 100% 20px;
+  background-repeat: repeat-y;
+}

@@ -1,6 +1,6 @@
 # Tic-Tac-Toe Game
 
-This is a simple **Tic-Tac-Toe** game built using **React**, **Vite.js** and **Tailwind CSS**, styled to resemble playing on a notepad with traditional pen writing and a lined paper background. The game allows two players to take turns playing as either 'X' or 'O' on a 3x3 grid and it keeps track of the game's state, allowing you to revisit any past move.
+This project is a simple **Tic-Tac-Toe** game built using **React**, **Vite.js** and **Tailwind CSS**. Styled to resemble playing _X and O's_ on a notepad with traditional pen writing and a lined paper background. The game allows two players to take turns playing as either 'X' or 'O' on a 3x3 grid and it keeps track of the game's state, allowing you to revisit any past move.
 
 <!-- TOC -->
 

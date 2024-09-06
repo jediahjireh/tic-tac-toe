@@ -1,4 +1,5 @@
 import { calculateWinner } from "../utils/calculateWinner.js";
+import { getWinningSquares } from "../utils/getWinningSquares.js";
 import Square from "./Square.jsx";
 import { useMemo } from "react";
 
@@ -6,6 +7,12 @@ import { useMemo } from "react";
 export default function Board({ currentPlayer, squares, onPlay }) {
   // call function to determine if there is a winner
   const winner = useMemo(() => calculateWinner(squares), [squares]);
+
+  // get winning combination indices if there's a winner
+  const winningSquares = useMemo(
+    () => getWinningSquares(squares, winner),
+    [squares, winner]
+  );
 
   // notify user of their move's outcome
   let status;
@@ -50,21 +57,27 @@ export default function Board({ currentPlayer, squares, onPlay }) {
   return (
     <div className="space-y-4 border p-20">
       {/* button to restart or start a new game */}
-      <button
-        onClick={handleButtonClick}
-        className="hover:text-blue-500 text-blue-700 text-xl"
-      >
-        {winner || squares.every((square) => square) ? "new game" : "restart"}
-      </button>
-      <header className="text-6xl flex flex-row justify-center font-bold text-gray-700">
-        tic tac toe
-      </header>
+      <span>
+        <button
+          onClick={handleButtonClick}
+          className="hover:text-blue-500 text-blue-700 text-xl pl-3"
+        >
+          {winner || squares.every((square) => square) ? "new game" : "restart"}
+        </button>
+        <header className="text-6xl flex flex-row justify-center font-bold text-gray-700">
+          tic tac toe
+        </header>
+      </span>
       <main className="flex flex-row justify-center items-center p-4">
         <div className="grid grid-cols-3 gap-2">
           {squares.map((value, i) => (
             <Square
               key={i}
-              className="p-4"
+              className={`${
+                winningSquares.includes(i)
+                  ? "bg-green-200 hover:bg-green-200"
+                  : "bg-yellow-50"
+              }`}
               value={value}
               onSquareClick={() => handleClick(i)}
             />
